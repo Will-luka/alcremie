@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Calculadora do bolo</title>
+  <title>Calculadora Pokémon Unite</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Calculadora do bolo</h1>
-    <p class="subtitle">Preencha os valores na aba Valores e calcule os resultados na aba Stats.</p>
+    <h1>Calculadora Pokémon Unite</h1>
+    <p class="subtitle">Preencha os valores, escolha a build e veja os resultados.</p>
 
     <div class="tabs">
       <button class="tab active" data-tab="valores">Valores</button>
-      <button class="tab" data-tab="formulas">Stats</button>
+      <button class="tab" data-tab="build">Build</button>
+      <button class="tab" data-tab="resultados">Fórmulas</button>
     </div>
 
     <section id="valores" class="panel active">
       <div class="grid">
-        <label>SpAtk
+        <label>SpAtk base
           <input type="number" id="spAtk" placeholder="Ex.: 300" />
         </label>
         <label>Level
@@ -27,21 +28,44 @@
       </div>
     </section>
 
-    <section id="formulas" class="panel">
+    <section id="build" class="panel">
+      <p class="hint">Selecione até 3 itens. Sp Atk Specs e Drive Lens possuem stacks configuráveis.</p>
+      <div class="items-grid">
+        <label class="check-item"><input type="checkbox" class="item" value="choiceSpecs"> Choice Specs</label>
+        <label class="check-item"><input type="checkbox" class="item" value="spAtkSpecs"> Sp Atk Specs</label>
+        <label class="check-item"><input type="checkbox" class="item" value="wiseGlasses"> Wise Glasses</label>
+        <label class="check-item"><input type="checkbox" class="item" value="driveLens"> Drive Lens</label>
+        <label class="check-item"><input type="checkbox" class="item" value="rescueHood"> Rescue Hood</label>
+      </div>
+
+      <div class="grid stacks">
+        <label>Stacks do Sp Atk Specs (1 a 6)
+          <input type="number" id="spAtkSpecsStacks" min="1" max="6" value="1" />
+        </label>
+        <label>Stacks do Drive Lens (0 a 20)
+          <input type="number" id="driveLensStacks" min="0" max="20" value="0" />
+        </label>
+      </div>
+
+      <p id="buildError" class="error"></p>
+    </section>
+
+    <section id="resultados" class="panel">
       <div class="formula-card">
         <h2>Recover</h2>
-        <p><strong>Cura:</strong> <span data-formula="recoverCura">0</span></p>
-        <p><strong>Cura Boostada:</strong> <span data-formula="recoverBoost">0</span></p>
+        <p><strong>Cura:</strong> <span data-output="recoverCura">0</span></p>
+        <p><strong>Cura Boostada:</strong> <span data-output="recoverBoost">0</span></p>
       </div>
 
       <div class="formula-card">
         <h2>Sweet Scent</h2>
-        <p><strong>Dano - Explosão:</strong> <span data-formula="sweetExplosion">0</span></p>
-        <p><strong>Dano - Anel externo:</strong> <span data-formula="sweetOuter">0</span></p>
+        <p><strong>Dano - Explosão:</strong> <span data-output="sweetExplosion">0</span></p>
+        <p><strong>Dano - Anel externo:</strong> <span data-output="sweetOuter">0</span></p>
       </div>
 
-       <button id="calcular">Calcular</button>
+      <button id="calcular">Calcular</button>
       <p id="erro" class="error"></p>
+      <p class="small" id="spAtkFinalText"></p>
     </section>
   </div>
 
