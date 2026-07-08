@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Calculadora de Fórmulas</title>
+  <title>Calculadora do bolo</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Calculadora de Fórmulas</h1>
-    <p class="subtitle">Preencha os valores na aba Valores e calcule os resultados na aba Fórmulas.</p>
+    <h1>Calculadora do bolo</h1>
+    <p class="subtitle">Preencha os valores na aba Valores e calcule os resultados na aba Stats.</p>
 
     <div class="tabs">
       <button class="tab active" data-tab="valores">Valores</button>
-      <button class="tab" data-tab="formulas">Fórmulas</button>
+      <button class="tab" data-tab="formulas">Stats</button>
     </div>
 
     <section id="valores" class="panel active">
@@ -39,12 +39,6 @@
         <p><strong>Dano - Explosão:</strong> <span data-formula="sweetExplosion">0</span></p>
         <p><strong>Dano - Anel externo:</strong> <span data-formula="sweetOuter">0</span></p>
       </div>
-
-      <button id="calcular">Calcular</button>
-      <p id="erro" class="error"></p>
-    </section>
-  </div>
-
   <script src="script.js"></script>
 </body>
 </html>
