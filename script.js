@@ -24,14 +24,6 @@ function enforceItemLimit() {
   botao.disabled = count > 3;
 }
 
-function validateStacks() {
-  const s = Number(spAtkSpecsStacks.value);
-  const d = Number(driveLensStacks.value);
-  if (Number.isNaN(s) || s < 1 || s > 6) return 'Sp Atk Specs deve ter entre 1 e 6 stacks.';
-  if (Number.isNaN(d) || d < 0 || d > 20) return 'Drive Lens deve ter entre 0 e 20 stacks.';
-  return '';
-}
-
 function compute() {
   const baseSpAtk = Number(spAtkInput.value);
   const level = Number(levelInput.value);
@@ -47,37 +39,42 @@ function compute() {
     return;
   }
 
-  const stackError = validateStacks();
-  if (stackError) {
-    erro.textContent = stackError;
-    return;
-  }
+  let spStacks = Number(spAtkSpecsStacks.value);
+  let driveStacks = Number(driveLensStacks.value);
+
+  if (Number.isNaN(spStacks) || spStacks < 1) spStacks = 1;
+  if (spStacks > 6) spStacks = 6;
+
+  if (Number.isNaN(driveStacks) || driveStacks < 0) driveStacks = 0;
+  if (driveStacks > 20) driveStacks = 20;
+
+  spAtkSpecsStacks.value = spStacks;
+  driveLensStacks.value = driveStacks;
 
   erro.textContent = '';
-  const spStacks = Number(spAtkSpecsStacks.value);
-  const driveStacks = Number(driveLensStacks.value);
 
   let spAtkFinal = baseSpAtk;
-  let rescueHood = false;
 
   if (items.includes('wiseGlasses')) spAtkFinal += 44 + baseSpAtk * 0.07;
   if (items.includes('spAtkSpecs')) spAtkFinal += 28 + 16 * spStacks;
   if (items.includes('choiceSpecs')) spAtkFinal += 44;
   if (items.includes('driveLens')) spAtkFinal += 28 + baseSpAtk * (0.006 * driveStacks);
-  if (items.includes('rescueHood')) rescueHood = true;
 
-  const recoverCura = 2.6 * spAtkFinal + 16 * (level - 1) + 330;
-  const recoverBoost = 3.9 * spAtkFinal + 24 * (level - 1) + 495;
-  const sweetExplosionBase = 0.74 * spAtkFinal + 9 * (level - 1) + 246;
-  const sweetOuterBase = 1.05 * spAtkFinal + 12 * (level - 1) + 345;
+  const recoverCuraBase = 2.6 * spAtkFinal + 16 * (level - 1) + 330;
+  const recoverBoostBase = 3.9 * spAtkFinal + 24 * (level - 1) + 495;
 
   const choiceBonus = items.includes('choiceSpecs') ? (60 + 0.40 * spAtkFinal) : 0;
-  const sweetExplosion = sweetExplosionBase + choiceBonus;
-  const sweetOuter = sweetOuterBase + choiceBonus;
 
-  const finalCuraMultiplier = rescueHood ? 1.17 : 1;
-  const recoverCuraFinal = recoverCura * finalCuraMultiplier;
-  const recoverBoostFinal = recoverBoost * finalCuraMultiplier;
+  let recoverCuraFinal = recoverCuraBase;
+  let recoverBoostFinal = recoverBoostBase;
+
+  if (items.includes('rescueHood')) {
+    recoverCuraFinal *= 1.17;
+    recoverBoostFinal *= 1.17;
+  }
+
+  const sweetExplosion = 0.74 * spAtkFinal + 9 * (level - 1) + 246 + choiceBonus;
+  const sweetOuter = 1.05 * spAtkFinal + 12 * (level - 1) + 345 + choiceBonus;
 
   document.querySelector('[data-output="recoverCura"]').textContent = formatNumber(recoverCuraFinal);
   document.querySelector('[data-output="recoverBoost"]').textContent = formatNumber(recoverBoostFinal);
