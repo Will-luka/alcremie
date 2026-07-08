@@ -145,8 +145,8 @@ button#calcular:disabled {
 }
 
 .item-img {
-  width: 32px;
-  height: 32px;
+  width: 18px;
+  height: 18px;
   object-fit: contain;
 }
 
