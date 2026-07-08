@@ -148,6 +148,7 @@ button#calcular:disabled {
   width: 18px;
   height: 18px;
   object-fit: contain;
+  flex-shrink: 0;
 }
 
 .title-with-img {
