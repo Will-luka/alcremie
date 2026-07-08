@@ -1,19 +1,135 @@
-* { box-sizing: border-box; }
-body { margin: 0; font-family: Arial, sans-serif; background: #0f172a; color: #e2e8f0; }
-.container { max-width: 980px; margin: 40px auto; padding: 24px; }
-h1 { margin-bottom: 8px; }
-.subtitle, .hint, .small { color: #94a3b8; }
-.tabs { display: flex; gap: 10px; margin: 24px 0; flex-wrap: wrap; }
-.tab { border: none; padding: 12px 18px; border-radius: 10px; background: #1e293b; color: #e2e8f0; cursor: pointer; }
-.tab.active { background: #38bdf8; color: #0f172a; font-weight: bold; }
-.panel { display: none; background: #111827; padding: 20px; border-radius: 16px; box-shadow: 0 8px 30px rgba(0,0,0,.25); }
-.panel.active { display: block; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-.items-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 16px 0; }
-.stacks { margin-top: 14px; }
-label { display: flex; flex-direction: column; gap: 8px; }
-.check-item { flex-direction: row; align-items: center; gap: 10px; background: #0f172a; border: 1px solid #334155; padding: 12px; border-radius: 10px; }
-input[type="number"] { padding: 12px; border-radius: 10px; border: 1px solid #334155; background: #0f172a; color: #e2e8f0; }
-.formula-card { background: #0f172a; border: 1px solid #334155; border-radius: 14px; padding: 16px; margin-bottom: 16px; }
-button#calcular { border: none; background: #22c55e; color: #052e16; font-weight: bold; padding: 12px 18px; border-radius: 10px; cursor: pointer; }
-.error { color: #f87171; min-height: 1.2em; }
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+.container {
+  max-width: 980px;
+  margin: 40px auto;
+  padding: 24px;
+}
+
+h1 {
+  margin-bottom: 8px;
+}
+
+.subtitle,
+.hint,
+.small {
+  color: #94a3b8;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin: 24px 0;
+  flex-wrap: wrap;
+}
+
+.tab {
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  background: #1e293b;
+  color: #e2e8f0;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: #38bdf8;
+  color: #0f172a;
+  font-weight: bold;
+}
+
+.panel {
+  display: none;
+  background: #111827;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.panel.active {
+  display: block;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.stacks {
+  margin-top: 14px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.check-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  background: #0f172a;
+  border: 1px solid #334155;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.check-item input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+input[type="number"] {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+.formula-card {
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+button#calcular {
+  border: none;
+  background: #22c55e;
+  color: #052e16;
+  font-weight: bold;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button#calcular:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #f87171;
+  min-height: 1.2em;
+}
