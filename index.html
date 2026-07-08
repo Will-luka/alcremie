@@ -1,1 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Fórmulas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Calculadora de Fórmulas</h1>
+    <p class="subtitle">Preencha os valores na aba Valores e calcule os resultados na aba Fórmulas.</p>
 
+    <div class="tabs">
+      <button class="tab active" data-tab="valores">Valores</button>
+      <button class="tab" data-tab="formulas">Fórmulas</button>
+    </div>
+
+    <section id="valores" class="panel active">
+      <div class="grid">
+        <label>SpAtk
+          <input type="number" id="spAtk" placeholder="Ex.: 300" />
+        </label>
+        <label>Level
+          <input type="number" id="level" placeholder="Ex.: 10" />
+        </label>
+      </div>
+    </section>
+
+    <section id="formulas" class="panel">
+      <div class="formula-card">
+        <h2>Recover</h2>
+        <p><strong>Cura:</strong> <span data-formula="recoverCura">0</span></p>
+        <p><strong>Cura Boostada:</strong> <span data-formula="recoverBoost">0</span></p>
+      </div>
+
+      <div class="formula-card">
+        <h2>Sweet Scent</h2>
+        <p><strong>Dano - Explosão:</strong> <span data-formula="sweetExplosion">0</span></p>
+        <p><strong>Dano - Anel externo:</strong> <span data-formula="sweetOuter">0</span></p>
+      </div>
+
+      <button id="calcular">Calcular</button>
+      <p id="erro" class="error"></p>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
