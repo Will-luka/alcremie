@@ -133,3 +133,32 @@ button#calcular:disabled {
   color: #f87171;
   min-height: 1.2em;
 }
+.check-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  background: #0f172a;
+  border: 1px solid #334155;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.item-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.title-with-img {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.skill-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
