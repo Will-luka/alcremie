@@ -135,9 +135,8 @@ button#calcular:disabled {
 }
 .check-item {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background: #0f172a;
   border: 1px solid #334155;
   padding: 12px;
